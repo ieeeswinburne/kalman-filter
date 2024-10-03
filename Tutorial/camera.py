@@ -26,10 +26,22 @@ kf.transitionMatrix = np.array([[1, 0, 1, 0],
                                 [0, 0, 0, 1]], np.float32)
 kf.measurementMatrix = np.array([[1, 0, 0, 0],
                                  [0, 1, 0, 0]], np.float32)
+# Process noise covariance matrix: represents uncertainty in the system's model (predicted position and velocity)
+# Multiplied by a small value (1e-4) to assume very low process noise (system is stable)
 kf.processNoiseCov = np.eye(4, dtype=np.float32) * 1e-4
+
+# Measurement noise covariance matrix: represents uncertainty in the sensor measurements (detected position)
+# Multiplied by 1e-1 to allow for moderate uncertainty in position measurements (sensor errors)
 kf.measurementNoiseCov = np.eye(2, dtype=np.float32) * 1e-1
+
+# Error covariance matrix after the update step: represents uncertainty in the initial state estimate (position and velocity)
+# Initially, the error is set to an identity matrix (uncertainty is assumed to be 1 for each state variable)
 kf.errorCovPost = np.eye(4, dtype=np.float32)
+
+# Initial state estimate: sets the initial position (x, y) and velocity (dx, dy) to zero
+# The object is assumed to be at the origin (0, 0) and stationary (zero velocity) at the start
 kf.statePost = np.array([[0], [0], [0], [0]], dtype=np.float32)
+
 
 # Variables to control detection rate
 frame_counter = 0
