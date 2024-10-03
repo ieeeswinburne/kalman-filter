@@ -1,0 +1,5 @@
+Download:
+
+- YOLOv3 weights: https://www.kaggle.com/datasets/shivam316/yolov3-weights
+- YOLOv3.cfg: https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg
+- COCO labels: https://github.com/pjreddie/darknet/blob/master/data/coco.names
